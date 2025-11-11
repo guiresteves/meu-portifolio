@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Guilherme Esteves - Desenvolvedor Back-end especializado em APIs e microservices.">
+    <meta name="author" content="Guilherme Esteves">
+
+    <!--Links-->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!--Título-->
+    <title>Guilherme Esteves - Portifólio</title>
+</head>
+<body>
+    <!--NavBar Principal-->
+    <nav class="navbar">
+        <ul>
+            <li class="indicador"></li>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+    <!--NavBar DropDown (Para telas menores)-->
+    <div class="navbar-dropdown">
+        <div class="dropdown">
+            <button id="dropdown-btn" class="dropdown-btn">
+                <span class="texto-btn">Home</span>
+                <span class="seta">▴</span>
+            </button>
+            <div id="dropdown-menu" class="dropdown-menu">
+                <span class="indicador-item"></span>
+                <a href="#home" class="dropdown-item">Home</a>
+                <a href="#about" class="dropdown-item">About Me</a>
+                <a href="#skills" class="dropdown-item">Skills</a>
+                <a href="#projects" class="dropdown-item">Projetos</a>
+                <a href="#contact" class="dropdown-item">Contato</a>
+            </div>
+        </div> 
+    </div>
+
+    <!--Sessão HOME-->
+    <section id="home" class="section animate">
+        <div>
+            <h1 class="name">Guilherme Esteves</h1>
+            <h2 class="description">
+                <span id="developer"></span>
+                <span id="caracteristica"></span>
+            </h2>
+        </div>
+        <ul class="social-midia">
+            <li><a href="https://github.com/guiresteves" target="_blank"><img src="assets/github.png" alt=""></a></li>
+            <li><a href="https://www.linkedin.com/in/guiresteves/" target="_blank"><img src="assets/linkedin.png" alt=""></a></li>
+            <li><a href="https://www.instagram.com/guiestteves_/" target="_blank"><img src="assets/instagram.png" alt=""></a></li>
+            <li><a href="#" target="_blank"><img src="assets/whatsapp.png" alt=""></a></li>
+        </ul>
+    </section>
+    <!--Sessão SOBRE-->
+    <section id="about" class="section animate">
+        <div class="information">
+            <h1 class="title">About Me</h1>
+            <h2 class="phrase">Minha Trajetória, Experiencia </h2>
+        </div>
+        <div class="box-about">
+            <div class="description-about">
+                <p>
+                    Sou desenvolvedor com foco em <strong>Back-End</strong>, especializado em <strong>APIs escaláveis</strong> e <strong>microsserviços</strong>. Tenho experiência em <strong>Java (Spring Boot)</strong>, <strong>Python</strong> e <strong>TypeScript/JavaScript com Node.js</strong>, utilizando frameworks como <strong>Express</strong> e <strong>Fastify</strong> para o desenvolvimento de APIs e aplicações back-end. Gosto de projetar sistemas seguros e performáticos, usando ferramentas modernas como <strong>Docker</strong>.
+                </p>
+                <p>
+                    Atualmente curso Ciência da Computação na <strong>Universidade Tiradentes</strong> e estou sempre em busca de aprimorar minhas técnicas e habilidades para contribuir com soluções criativas. Aplico boas práticas de desenvolvimento e metodologias ágeis como <strong>Scrum</strong> e <strong>Kanban</strong> para garantir eficiência e qualidade no processo de desenvolvimento.
+                </p>
+                <p>
+                    Quando não estou programando, gosto de explorar otimização de <strong>banco de dados</strong>, <strong>segurança de aplicações</strong> e <strong>tecnologias emergentes</strong>, sempre buscando construir sistemas preparados para o futuro.
+                </p>
+
+            </div>
+            <button>Download</button>
+        </div>
+    </section>
+    <!--Sessão SKILLS-->
+    <section id="skills" class="section animate">
+        <div class="information">
+            <h1 class="title">Technical Skills</h1>
+            <h2 class="description">Aqui estão as Stacks, Frameworks e Ferramentas que utilizo no desenvolvimento algumas de aplicações</h2>
+        </div>
+        <div class="skills-nav">
+            <span class="arrow-left"><img src="assets/seta-esquerda.png" alt=""></span>
+            <div class="skills-button">
+                <button class="active" data-skill="backend">
+                    <img src="assets/coding.png" alt="">
+                    <span>Back-end</span>
+                </button>
+                <button data-skill="frontend">
+                    <img src="assets/coding.png" alt="">
+                    <span>Front-end</span>
+                </button>
+                <button data-skill="database">
+                    <img src="assets/storage-device.png" alt="">
+                    <span>Banco de Dados</span>
+                </button>
+                <button data-skill="tools">
+                    <img src="assets/camadas.png" alt="">
+                    <span>Tools</span>
+                </button>
+            </div> 
+            <span class="arrow-right"><img src="assets/seta-direita.png" alt=""></span>
+        </div>
+        <div class="skills-grid" id="skills-grid"></div>
+    </section>
+    <!--Sessão PROJETOS-->
+    <section id="projects" class="section animate">
+        <div class="information">
+            <h1 class="title">Projetos</h1>
+            <h2 class="description">Confira alguns projetos que desenvolvi. Clique para saber mais sobre cada um.</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="projects-card">
+                <div class="projects-img">
+                    <img src="assets/projects/Web Kelas V2.jpg" alt="Projeto Sistema de Controle de Tarefas" loading="lazy">
+                </div>
+                <div class="projects-info">
+                    <h1>Sistema de Controle de Tarefas</h1>
+                    <p>
+                        Este é um projeto simples desenvolvido em Java puro (sem frameworks) que simula um sistema de tarefas com persistência em arquivo. É executado totalmente no terminal (modo CLI) e permite criar, listar, editar, concluir e excluir tarefas, além de salvar automaticamente ao sair e carregar ao iniciar.
+                    </p>
+                    <button><a href="https://github.com/guiresteves/Sistema-de-Controle-de-Tarefas-To-Do" target="_blank">GitHub</a></button>
+                </div>
+            </div>
+            <div class="projects-card">
+                <div class="projects-img">
+                    <img src="assets/projects/Web Kelas V2.jpg" alt="Projeto Sistema de Controle de Tarefas" loading="lazy">
+                </div>
+                <div class="projects-info">
+                    <h1>Sistema de Controle de Tarefas</h1>
+                    <p>
+                        Este é um projeto simples desenvolvido em Java puro (sem frameworks) que simula um sistema de tarefas com persistência em arquivo. É executado totalmente no terminal (modo CLI) e permite criar, listar, editar, concluir e excluir tarefas, além de salvar automaticamente ao sair e carregar ao iniciar.
+                    </p>
+                    <button><a href="https://github.com/guiresteves/Sistema-de-Controle-de-Tarefas-To-Do" target="_blank">GitHub</a></button>
+                </div>
+            </div>
+            <div class="projects-card">
+                <div class="projects-img">
+                    <img src="assets/projects/Web Kelas V2.jpg" alt="Projeto Sistema de Controle de Tarefas" loading="lazy">
+                </div>
+                <div class="projects-info">
+                    <h1>Sistema de Controle de Tarefas</h1>
+                    <p>
+                        Este é um projeto simples desenvolvido em Java puro (sem frameworks) que simula um sistema de tarefas com persistência em arquivo. É executado totalmente no terminal (modo CLI) e permite criar, listar, editar, concluir e excluir tarefas, além de salvar automaticamente ao sair e carregar ao iniciar.
+                    </p>
+                    <button><a href="https://github.com/guiresteves/Sistema-de-Controle-de-Tarefas-To-Do" target="_blank">GitHub</a></button>
+                </div>
+            </div>
+            <div class="projects-card">
+                <div class="projects-img">
+                    <img src="assets/projects/Web Kelas V2.jpg" alt="Projeto Sistema de Controle de Tarefas" loading="lazy">
+                </div>
+                <div class="projects-info">
+                    <h1>Sistema de Controle de Tarefas</h1>
+                    <p>
+                        Este é um projeto simples desenvolvido em Java puro (sem frameworks) que simula um sistema de tarefas com persistência em arquivo. É executado totalmente no terminal (modo CLI) e permite criar, listar, editar, concluir e excluir tarefas, além de salvar automaticamente ao sair e carregar ao iniciar.
+                    </p>
+                    <button><a href="https://github.com/guiresteves/Sistema-de-Controle-de-Tarefas-To-Do" target="_blank">GitHub</a></button>
+                </div>
+            </div>
+            <div class="projects-card">
+                <div class="projects-img">
+                    <img src="assets/projects/Web Kelas V2.jpg" alt="Projeto Sistema de Controle de Tarefas" loading="lazy">
+                </div>
+                <div class="projects-info">
+                    <h1>Sistema de Controle de Tarefas</h1>
+                    <p>
+                        Este é um projeto simples desenvolvido em Java puro (sem frameworks) que simula um sistema de tarefas com persistência em arquivo. É executado totalmente no terminal (modo CLI) e permite criar, listar, editar, concluir e excluir tarefas, além de salvar automaticamente ao sair e carregar ao iniciar.
+                    </p>
+                    <button><a href="https://github.com/guiresteves/Sistema-de-Controle-de-Tarefas-To-Do" target="_blank">GitHub</a></button>
+                </div>
+            </div>
+            <div class="projects-card">
+                <div class="projects-img">
+                    <img src="assets/projects/Web Kelas V2.jpg" alt="Projeto Sistema de Controle de Tarefas" loading="lazy">
+                </div>
+                <div class="projects-info">
+                    <h1>Sistema de Controle de Tarefas</h1>
+                    <p>
+                        Este é um projeto simples desenvolvido em Java puro (sem frameworks) que simula um sistema de tarefas com persistência em arquivo. É executado totalmente no terminal (modo CLI) e permite criar, listar, editar, concluir e excluir tarefas, além de salvar automaticamente ao sair e carregar ao iniciar.
+                    </p>
+                    <button><a href="https://github.com/guiresteves/Sistema-de-Controle-de-Tarefas-To-Do" target="_blank">GitHub</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Sessão CONTATO-->
+    <section id="contact" class="section animate">
+        <div class="information">
+            <h1 class="title">Contato</h1>
+            <h2 class="description">Entre em contato e vamos conversar sobre novas oportunidades.</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-container">
+                <form action="" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Seu Nome</label>
+                            <input type="text" id="name" placeholder="Complete Seu Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Seu Email</label>
+                            <input type="email" id="email" placeholder="YourEmail@gmail.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="send-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!--Footer-->
+    <footer>
+        <p>© 2025 | Guilherme Esteves - Software Developer</p>
+    </footer>
+
+    <!--Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="module" src="js/script.js"></script>
+
+</body>
+</html>
