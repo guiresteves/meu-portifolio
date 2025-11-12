@@ -145,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* === NAVBAR (DROPDOWN) === */
-
   const dropdown = document.querySelector(".dropdown");
   const dropdownBtn = document.getElementById("dropdown-btn");
   const textoBtn = dropdownBtn.querySelector(".texto-btn");
@@ -153,15 +152,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdownMenu = document.getElementById("dropdown-menu");
   const menuItems = document.querySelectorAll(".dropdown-item");
   const indicadorDrop = document.querySelector(".indicador-item");
-
-  // Todas as sections do site
+  const navbarD = document.querySelector(".navbar-dropdown");
+  const homeSection = document.querySelector("#home");
   const sectionsD = document.querySelectorAll("section");
 
-  // Define item ativo inicial
+  // === Configurações ===
+  const SHOW_DELAY = 300; // ms antes de aparecer
+  const HIDE_DELAY = 2000; // ms pra sumir se parado
+  const MIN_SCROLL_UP = 200; // px mínimos de subida pra mostrar
+
+  // === Define item ativo inicial ===
   let activeItem = document.querySelector('.dropdown-item[href="#home"]');
   moveIndicadorDrop(activeItem);
 
-  // Abre/fecha menu
+  // === Dropdown principal ===
   dropdownBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     dropdown.classList.toggle("open");
@@ -170,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
       : "rotate(0deg)";
   });
 
-  // Fecha ao clicar fora
   document.addEventListener("click", (e) => {
     if (!dropdown.contains(e.target)) {
       dropdown.classList.remove("open");
@@ -178,46 +181,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Clique e hover nos itens do menu
   menuItems.forEach((item) => {
     item.addEventListener("mouseenter", () => moveIndicadorDrop(item));
-
     item.addEventListener("click", (e) => {
       e.preventDefault();
-
       activeItem = item;
       moveIndicadorDrop(item);
       textoBtn.textContent = item.textContent;
 
-      // Fecha o menu e reseta seta
       dropdown.classList.remove("open");
       setaBtn.style.transform = "rotate(0deg)";
 
-      // 🔥 Rola suavemente até a section
       const targetId = item.getAttribute("href");
       const targetSection = document.querySelector(targetId);
       if (targetSection) {
         window.scrollTo({
-          top: targetSection.offsetTop - 100, // ajuste se sua navbar tiver altura diferente
+          top: targetSection.offsetTop - 100,
           behavior: "smooth",
         });
       }
     });
   });
 
-  // Volta o indicador pro item ativo se o mouse sair do menu
   dropdownMenu.addEventListener("mouseleave", () => {
     if (activeItem) moveIndicadorDrop(activeItem);
   });
 
-  // 🔥 Atualiza o texto do botão conforme a section visível
   window.addEventListener("scroll", () => {
     let currentSection = "";
-
     sectionsD.forEach((section) => {
       const sectionTop = section.offsetTop - 150;
       const sectionHeight = section.clientHeight;
-
       if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
         currentSection = section.getAttribute("id");
       }
@@ -233,7 +227,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ====== Indicador animado ======
   function moveIndicadorDrop(element) {
     const rect = element.getBoundingClientRect();
     const menuRect = dropdownMenu.getBoundingClientRect();
@@ -242,73 +235,47 @@ document.addEventListener("DOMContentLoaded", () => {
     indicadorDrop.style.height = `${rect.height}px`;
   }
 
-  /* 🟢 NOVO — Efeito esconder/mostrar a navbar ao rolar */
+  /* === Mostrar/esconder navbar dinamicamente === */
   let lastScroll = 0;
-  const navbarD = document.querySelector(".navbar-dropdown");
-  const homeSection = document.querySelector("#home");
+  let hideTimeout;
+  let showTimeout;
 
   window.addEventListener("scroll", () => {
     const currentScroll = window.pageYOffset;
     const homeBottom = homeSection.offsetTop + homeSection.offsetHeight;
 
-    // Mostra navbar enquanto estiver na section Home
+    // Sempre visível na Home
     if (currentScroll < homeBottom) {
-      navbarD.classList.remove("navbar-hidden");
+      navbarD.style.opacity = "1";
+      navbarD.style.pointerEvents = "auto";
       return;
     }
 
-    // Rolando pra baixo → esconde
-    if (currentScroll > lastScroll) {
-      navbarD.classList.add("navbar-hidden");
-    }
-    // Rolando pra cima → mostra
-    else {
-      navbarD.classList.remove("navbar-hidden");
-    }
-
-    lastScroll = currentScroll;
-  });
-
-  let lastScrollTop = 0;
-  let lastShowScroll = 0; // guarda onde o usuário estava quando o navbar apareceu
-  let hideTimeout;
-  let showTimeout;
-
-  // Configurações fáceis de ajustar:
-  const SHOW_DELAY = 300; // tempo antes de mostrar (ms)
-  const HIDE_DELAY = 3000; // tempo para sumir se parado (ms)
-  const MIN_SCROLL_UP = 100; // distância mínima que precisa subir (px)
-
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Verifica se rolou pra cima
-    if (currentScroll < lastScrollTop) {
-      // Só mostra se subiu mais que a distância mínima
-      if (lastScrollTop - currentScroll > MIN_SCROLL_UP) {
+    // Rolando pra cima
+    if (currentScroll < lastScroll) {
+      if (lastScroll - currentScroll > MIN_SCROLL_UP) {
         clearTimeout(showTimeout);
         showTimeout = setTimeout(() => {
-          navbar.style.opacity = "1";
-          navbar.style.pointerEvents = "auto";
-          navbar.style.transition = "opacity 0.5s ease";
-          lastShowScroll = currentScroll;
+          navbarD.style.opacity = "1";
+          navbarD.style.pointerEvents = "auto";
+          navbarD.style.transition = "opacity 0.5s ease";
         }, SHOW_DELAY);
       }
     } 
     // Rolando pra baixo
     else {
-      navbar.style.opacity = "0";
-      navbar.style.pointerEvents = "none";
+      navbarD.style.opacity = "0";
+      navbarD.style.pointerEvents = "none";
     }
 
-    // some após um tempo de inatividade
+    // Oculta após tempo parado
     clearTimeout(hideTimeout);
     hideTimeout = setTimeout(() => {
-      navbar.style.opacity = "0";
-      navbar.style.pointerEvents = "none";
+      navbarD.style.opacity = "0";
+      navbarD.style.pointerEvents = "none";
     }, HIDE_DELAY);
 
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // evita negativos
+    lastScroll = currentScroll <= 0 ? 0 : currentScroll;
   });
 
 
