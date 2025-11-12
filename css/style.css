@@ -101,7 +101,13 @@ body {
   z-index: 999;
   padding-top: 3rem;
   background: transparent;       /* mantém visual limpo */
+  transition: transform 0.4s ease;
 }
+
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
 
 .dropdown {
   position: relative;            /* botão centralizado dentro do container fixo */
@@ -315,14 +321,14 @@ body {
 
 @media (max-width: 480px) {
   #home .name {
-    font-size: 2.5rem;
+    font-size: 4rem;
   }
   #home h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   #home .social-midia li img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
 
   #home .social-midia {
@@ -335,7 +341,7 @@ body {
 
 #about {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   gap: 50px;
@@ -398,7 +404,7 @@ body {
   height: auto;
   background-color: var(--color-overlay-light);
   color: var(--color-white);
-  text-align: left ;
+  text-align: justify ;
   justify-content: center;
   border-radius: 15px;
   font-weight: 500;
@@ -423,12 +429,18 @@ body {
   #about {
     height: auto;
     padding: 0 100px 100px 100px;
+    gap: 30px;
+  }
+
+  #about .information {
+    gap: 10px;
   }
 
   #about .description-about {
     padding: 30px 50px;
     width: auto;
     height: auto;
+    gap: 20px;
   }
 }
 
@@ -445,16 +457,19 @@ body {
   }
 
   #about .description-about {
-    gap: 25px;
+    gap: 20px;
     padding: 30px 40px;
     width: 100%;
     height: auto;
-    font-size: 1.1rem;
+    text-align: left;
+    word-break: keep-all;
+    font-size: 1.2rem;
+    font-weight: 500;
   }
 
   #about .box-about button {
     width: 200px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
   }
 }
@@ -463,7 +478,7 @@ body {
 
   #about {
     height: auto;
-    gap: 50px;
+    gap: 20px;
     padding: 0 20px 100px 20px;
   }
 
@@ -476,9 +491,9 @@ body {
   #about .phrase {
     text-align: center;
     color: var(--color-white);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 600;
     max-width: 800px;
   }
 
@@ -489,7 +504,7 @@ body {
 
 #skills {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   gap: 50px;
@@ -670,6 +685,7 @@ body {
 @media (max-width: 1024px) {
   #skills{
     padding: 0 100px;
+    gap: 30px;
   }
 
   #skills .skills-nav {
@@ -711,16 +727,29 @@ body {
   #skills {
     height: auto ;
     padding: 0 20px;
-    gap: 30px;
+    gap: 20px;
   }
 
-  #skills .skills-grid {
-    grid-template-columns: repeat(3, 0fr);
+  #skills .information {
+    gap: 10px;
   }
 
   #skills .information .title {
     font-size: 3rem;
     font-weight: bold;
+  }
+
+  #skills .description {
+    text-align: center;
+    color: var(--color-white);
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 500;
+    max-width: 800px;
+  }
+
+  #skills .skills-grid {
+    grid-template-columns: repeat(3, 0fr);
   }
 
   #skills .skills-nav {
@@ -778,7 +807,7 @@ body {
   #skills .description {
     text-align: center;
     color: var(--color-white);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-style: italic;
     font-weight: 500;
     max-width: 800px;
@@ -961,8 +990,8 @@ body {
   padding: 10px 30px;
   height: auto;
   border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -1004,12 +1033,28 @@ body {
   #projects .projects-grid {
     grid-template-columns: repeat(1, 0fr)
   }
+
+  #projects {
+    gap: 30px;
+  }
 }
 
 @media (max-width: 768px) {
+  #projects {
+    gap: 20px;
+  }
+
+  #projects .information {
+    gap: 10px;
+  }
+
   #projects .information .title {
     font-size: 3rem;
     font-weight: bold;
+  }
+
+  #projects .description {
+    font-size: 1.3rem;
   }
 }
 
@@ -1021,7 +1066,7 @@ body {
   #projects .description {
     text-align: center;
     color: var(--color-white);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-style: italic;
     font-weight: 500;
     max-width: 800px;
@@ -1144,7 +1189,7 @@ body {
 #contact label {
   font-weight: 600;
   margin-bottom: 8px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--color-white);
 }
 
@@ -1157,7 +1202,7 @@ textarea {
   color: #fff;
   padding: 12px 15px;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
 }
 
@@ -1181,9 +1226,9 @@ textarea:focus {
   padding: 15px;
   color: #fff;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 #contact .send-btn:hover {
@@ -1194,6 +1239,11 @@ textarea:focus {
 @media (max-width: 1024px) {
   #contact {
     padding: 0 100px;
+    gap: 30px;
+  }
+
+  #contact .information {
+    gap: 10px;
   }
 
 
@@ -1210,23 +1260,12 @@ textarea:focus {
 @media (max-width: 768px) {
   #contact {
     padding: 0 20px;
+    gap: 20px;
   }
 
-
-  #contact .title {
-    font-size: 3rem;
+  #contact .information {
+    gap: 10px;
   }
-
-  #contact .description {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  #contact {
-    padding: 0 20px;
-  }
-
 
   #contact .title {
     font-size: 3rem;

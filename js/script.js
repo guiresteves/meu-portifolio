@@ -242,6 +242,33 @@ document.addEventListener("DOMContentLoaded", () => {
     indicadorDrop.style.height = `${rect.height}px`;
   }
 
+  /* 🟢 NOVO — Efeito esconder/mostrar a navbar ao rolar */
+  let lastScroll = 0;
+  const navbarD = document.querySelector(".navbar-dropdown");
+  const homeSection = document.querySelector("#home");
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+    const homeBottom = homeSection.offsetTop + homeSection.offsetHeight;
+
+    // Mostra navbar enquanto estiver na section Home
+    if (currentScroll < homeBottom) {
+      navbarD.classList.remove("navbar-hidden");
+      return;
+    }
+
+    // Rolando pra baixo → esconde
+    if (currentScroll > lastScroll) {
+      navbarD.classList.add("navbar-hidden");
+    }
+    // Rolando pra cima → mostra
+    else {
+      navbarD.classList.remove("navbar-hidden");
+    }
+
+    lastScroll = currentScroll;
+  });
+
 
   // ======== SCROLL REVEAL ========
   const observer = new IntersectionObserver(
