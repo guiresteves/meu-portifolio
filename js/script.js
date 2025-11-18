@@ -330,11 +330,13 @@ document.addEventListener("DOMContentLoaded", () => {
       { name: "CSS", icon: "assets/logos/css.svg" },
       { name: "JavaScript", icon: "assets/logos/javascript.svg" },
       { name: "TypeScript", icon: "assets/logos/typescript.svg" },
-      { name: "Angular", icon: "assets/logos/angular.svg" },
-      { name: "React", icon: "assets/logos/react.svg" },
-      { name: "Vue", icon: "assets/logos/vue.svg" },
-      { name: "Tailwind", icon: "assets/logos/tailwind.svg" },
       { name: "BootStrap", icon: "assets/logos/bootstrap.svg" },
+      { name: "React", icon: "assets/logos/react.svg" },
+      { name: "Angular", icon: "assets/logos/angular.svg" },
+      { name: "Tailwind", icon: "assets/logos/tailwind.svg" },
+      /* 
+      { name: "Vue", icon: "assets/logos/vue.svg" },
+      */
     ],
     database: [
       { name: "MySQL", icon: "assets/logos/mysql.svg" },
@@ -344,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tools: [
       { name: "Docker", icon: "assets/logos/docker.svg" },
       { name: "Git", icon: "assets/logos/git.svg" },
-      { name: "GitHub", icon: "assets/logos/github.svg" },
+      { name: "GitHub", icon: "assets/logos/github2.png" },
     ],
   };
 
@@ -460,4 +462,11 @@ document.addEventListener("DOMContentLoaded", () => {
       feedback.style.opacity = "0";
     }, 4000);
   }
+
+  document.getElementById("downloadBtn").addEventListener("click", () => {
+    const link = document.createElement("a");
+    link.href = "assets/curriculo/Currículo - Guilherme Rodrigues Esteves.pdf";
+    link.download = "Currículo - Guilherme Rodrigues Esteves.pdf";
+    link.click();
+  });
 });
