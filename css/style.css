@@ -214,6 +214,20 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .navbar {
+    display: none;
+  }
+
+  .dropdown-menu {
+    display: none;
+  }
+
+  .navbar-dropdown {
+    display: none;
+  }
+}
+
 
 /* === SECTION === */
 
